@@ -6,7 +6,7 @@ import { Injectable } from "@nestjs/common";
 export class TastyFood extends InventoryProvider{
 
     async getOrders(credential: CredentialDetails): Promise<any> {
-        console.log("Tasty Service Called Here")
-        return "Tasty Service Called Here"
+        console.log("Tasty Service Called using factory pattern")
+        return "Tasty Service Called using factory pattern"
     }
 }

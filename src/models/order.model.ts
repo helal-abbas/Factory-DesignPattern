@@ -6,3 +6,8 @@ export class OrderListModel {
     readonly credentialDetails: CredentialDetails;
     readonly page: number;
 }
+
+export interface FoodicsError {
+    readonly data: string;
+    readonly message?: string;
+  }

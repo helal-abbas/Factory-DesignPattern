@@ -9,8 +9,7 @@ export class FoodicsProvider extends InventoryProvider {
         credentialDetails: CredentialDetails,
         page = 1
       ) {
-        console.log(credentialDetails)
-        console.log("Foodics Service Called Here")
+        console.log("Tasty Service Called using factory pattern",credentialDetails)
         return credentialDetails
       }
 }
