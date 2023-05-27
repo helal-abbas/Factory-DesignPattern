@@ -1,10 +1,11 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { OrderListModel } from './models/order.model';
+import { RedisService } from './redis';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService, private readonly redis: RedisService) {}
 
   @Get()
   getHello(): string {
@@ -52,5 +53,15 @@ export class AppController {
     console.log(body)
   
     return this.appService.deleteIdentity(body.identityId)
+  }
+
+  @Get('getredis')
+  async redisCredentials(@Query('key') key: string) {
+      return await this.redis.get(key)
+    }
+
+  @Post('setredis')
+  async setRedisClinet(@Body() body) {
+    return await this.redis.set('item-'+body.id,JSON.stringify(body))
   }
 }
