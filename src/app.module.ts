@@ -6,8 +6,14 @@ import { FoodicsProvider } from './factory/foodics.provider';
 import { TastyFood } from './factory/tasty.provider';
 import { NestModule, MiddlewareConsumer  } from '@nestjs/common';
 import { CorsMiddleware } from './middleware/cors.middleware';
+import { RedisModule } from './redis';
 @Module({
-  imports: [],
+  imports: [RedisModule.forRoorAsync(
+    {
+      host: '127.0.0.1',
+      port: 6379
+    }
+  )],
   controllers: [AppController],
   providers: [AppService,InventoryProviderFactory,FoodicsProvider,TastyFood],
 })
